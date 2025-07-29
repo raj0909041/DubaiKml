@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dubai Sector Maps</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Gotham, sans-serif;
+            background: url('Background1.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .header {
+            background: rgba(255,255,255,0.9);
+            padding: 12px 20px;
+            font-size: 22px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header img {
+            height: 40px;
+        }
+        .dropdown {
+            padding: 10px 20px;
+            background: #fff;
+        }
+        iframe {
+            display: none;
+            width: 100%;
+            height: 90vh;
+            border: none;
+        }
+        iframe.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div>Savills MapView | Dubai Sectoral Landscape</div>
+        <img src="savills logo.png" alt="Savills Logo" />
+    </div>
+
+    <div class="dropdown">
+        <label><strong>Select View: </strong></label>
+        <select onchange="switchMap(this.value)">
+            <option value="sector">Sector View</option>
+            <option value="subsector">Subsector View</option>
+            <option value="community">Community View</option>
+        </select>
+    </div>
+
+    <iframe id="sector" class="active" src="sector_map.html"></iframe>
+    <iframe id="subsector" src="subsector_map.html"></iframe>
+    <iframe id="community" src="community_map.html"></iframe>
+
+    <script>
+        function switchMap(id) {
+            document.querySelectorAll('iframe').forEach(el => el.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
