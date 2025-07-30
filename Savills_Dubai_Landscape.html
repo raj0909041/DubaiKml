@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Savills Map | Dubai Landscape</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            font-family: Gotham, sans-serif;
+            display: grid;
+            grid-template-rows: auto auto 1fr auto;
+            background: url('../1_Raw/Style tools/Background1.png') no-repeat center center fixed;
+            background-size: cover;
+            overflow: hidden;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.75);
+            padding: 10px 20px;  /* reduced from 16px 24px */
+            font-size: 20px;     /* slightly reduced */
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .header img {
+            height: 40px;  /* reduced from 44px */
+        }
+
+        .dropdown {
+            background: rgba(255, 255, 255, 0.75);
+            padding: 10px 20px;  /* reduced vertical padding */
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .dropdown select {
+            font-size: 15px;
+            padding: 5px 10px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: none;
+        }
+
+        iframe.active {
+            display: block;
+        }
+
+        /* Move zoom controls to bottom-left */
+        .leaflet-top.leaflet-left {
+            top: unset !important;
+            bottom: 10px !important;
+            left: 10px !important;
+        }
+
+        .footer-note {
+            background: rgba(255, 255, 255, 0.75);
+            padding: 8px 20px;
+            font-size: 13px;
+            color: #444;
+            text-align: center;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div>Savills MapView | Dubai Sectoral Landscape</div>
+        <img src="../1_Raw/Style tools/savills logo.png" alt="Savills Logo" />
+    </div>
+
+    <div class="dropdown">
+        <label for="mapSelector"><strong>Select View:</strong></label>
+        <select id="mapSelector" onchange="switchMap(this.value)">
+            <option value="sector">Sector View</option>
+            <option value="subsector">Subsector View</option>
+            <option value="community">Community View</option>
+        </select>
+    </div>
+
+    <iframe id="sector" class="active" src="sector_map.html"></iframe>
+    <iframe id="subsector" src="subsector_map.html"></iframe>
+    <iframe id="community" src="community_map.html"></iframe>
+
+    <div class="footer-note">
+        <em>Note:</em> The boundaries shown on this map are for indicative purposes only. Actual planning or jurisdictional boundaries may vary slightly from those displayed.
+    </div>
+
+    <script>
+        function switchMap(id) {
+            document.querySelectorAll('iframe').forEach(el => el.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
