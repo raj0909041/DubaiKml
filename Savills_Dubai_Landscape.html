@@ -19,8 +19,8 @@
 
         .header {
             background: rgba(255, 255, 255, 0.75);
-            padding: 10px 20px;  /* reduced from 16px 24px */
-            font-size: 20px;     /* slightly reduced */
+            padding: 10px 20px;
+            font-size: 20px;
             font-weight: bold;
             display: flex;
             justify-content: space-between;
@@ -29,12 +29,12 @@
         }
 
         .header img {
-            height: 40px;  /* reduced from 44px */
+            height: 40px;
         }
 
         .dropdown {
             background: rgba(255, 255, 255, 0.75);
-            padding: 10px 20px;  /* reduced vertical padding */
+            padding: 10px 20px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -57,7 +57,6 @@
             display: block;
         }
 
-        /* Move zoom controls to bottom-left */
         .leaflet-top.leaflet-left {
             top: unset !important;
             bottom: 10px !important;
@@ -84,15 +83,17 @@
     <div class="dropdown">
         <label for="mapSelector"><strong>Select View:</strong></label>
         <select id="mapSelector" onchange="switchMap(this.value)">
-            <option value="sector">Sector View</option>
-            <option value="subsector">Subsector View</option>
-            <option value="community">Community View</option>
+            <option value="sector">DLD Sector View</option>
+            <option value="subsector">Savills Subsector View</option>
+            <option value="community">DLD Community View</option>
+            <option value="neighbour">Savills Spotlight Neighbourhoods</option>
         </select>
     </div>
 
     <iframe id="sector" class="active" src="sector_map.html"></iframe>
     <iframe id="subsector" src="subsector_map.html"></iframe>
     <iframe id="community" src="community_map.html"></iframe>
+    <iframe id="neighbour" src="neighbourhood_map.html"></iframe>
 
     <div class="footer-note">
         <em>Note:</em> The boundaries shown on this map are for indicative purposes only. Actual planning or jurisdictional boundaries may vary slightly from those displayed.
