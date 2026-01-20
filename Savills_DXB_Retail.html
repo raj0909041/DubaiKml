@@ -15,7 +15,7 @@
       font-family: Gotham, Arial, sans-serif;
       display: grid;
       grid-template-rows: auto auto 1fr auto;
-      background: url('Background1.png') no-repeat center center fixed;
+      background: url('../1_Raw/Style tools/Background1.png') no-repeat center center fixed;
       background-size: cover;
       overflow: hidden;
     }
@@ -138,7 +138,7 @@
 
     <div class="header-right">
       <a class="btn" href="https://app.powerbi.com/groups/me/reports/6d413caa-8bce-440d-a1bf-d34e107619aa/3f105727fb65cd744aec?experience=power-bi" target="_self" title="Back to Dashboard">⟵ Home</a>
-      <img src="savills logo.png" alt="Savills Logo" />
+      <img src="../1_Raw/Style tools/savills logo.png" alt="Savills Logo" />
     </div>
   </div>
 
@@ -340,8 +340,7 @@
       style: defaultStyle,
       onEachFeature: function(feature, layer) {
         const nm = feature.properties.name || feature.properties.id || "Unnamed";
-        const desc = feature.properties.description || "";
-        layer.bindTooltip(`<b>${nm}</b>${desc ? "<br/>" + desc : ""}`);
+        layer.bindTooltip(`<b>${nm}</b>`);
         layersById[feature.properties.id] = layer;
       }
     }).addTo(map);
@@ -390,4 +389,3 @@
 
 </body>
 </html>
-
