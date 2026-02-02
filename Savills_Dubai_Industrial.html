@@ -15,7 +15,7 @@
       font-family: Gotham, Arial, sans-serif;
       display: grid;
       grid-template-rows: auto auto 1fr auto;
-      background: url('Background1.png') no-repeat center center fixed;
+      background: url('../1_Raw/Style tools/Background1.png') no-repeat center center fixed;
       background-size: cover;
       overflow: hidden;
     }
@@ -139,7 +139,7 @@
 
     <div class="header-right">
       <a class="btn" href="https://app.powerbi.com/groups/me/reports/63ecd051-b53f-49b3-a832-32c2c2bc6ef4/3ea87ce3fa8204968d5a?experience=power-bi" target="_self" title="Back to Dashboard">⟵ Home</a>
-      <img src="savills logo.png" alt="Savills Logo" />
+      <img src="../1_Raw/Style tools/savills logo.png" alt="Savills Logo" />
     </div>
   </div>
 
@@ -200,10 +200,18 @@
     const geoLayer = L.geoJSON(geojsonData, {
       style: defaultStyle,
       onEachFeature: function(feature, layer) {
-        const id = feature.properties.id;
-        // ❌ tooltip removed
-        layersById[id] = layer;
-      }
+      const id = feature.properties.id;
+      const nm = (feature.properties.name || id || "Unnamed");
+    
+      // ✅ basic tooltip (just the name)
+      layer.bindTooltip(`<b>${nm}</b>`, {
+        sticky: true,
+        direction: "top",
+        opacity: 0.9
+      });
+    
+      layersById[id] = layer;
+    }
     }).addTo(map);
 
     try {
@@ -268,4 +276,3 @@
 
 </body>
 </html>
-
